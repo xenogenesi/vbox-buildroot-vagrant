@@ -24,7 +24,7 @@ sudo kpartx -d ${image_raw} 2>/dev/null || true
 rm -f ${output_vdi} 2>/dev/null || true
 
 # create image container
-dd if=/dev/zero of=${image_raw} bs=1M count=100
+dd if=/dev/zero of=${image_raw} bs=1M count=150
 
 # create two partitions:
 # 1) few mega "W95 Fat" for syslinux and bzImage
