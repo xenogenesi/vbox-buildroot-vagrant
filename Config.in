@@ -1,2 +1,3 @@
+source "$BR2_EXTERNAL/package/phpmyadmin/Config.in"
 source "$BR2_EXTERNAL/package/vbox-ga/Config.in"
 
