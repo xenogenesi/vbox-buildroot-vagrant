@@ -2,7 +2,6 @@
 External buildroot to build a minimal VirtualBox disk image with busybox, Vagrant ready.
 
 Some note:
-- current configs support only 64bit
 - ipv4 only, ipv6 disabled
 - openssl/ssh enabled
 - vagrant user/home
