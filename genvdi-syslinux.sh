@@ -15,6 +15,8 @@ vfat_start=2048
 vfat_start_in_mega=1M
 syslinux_cfg=/tmp/syslinux.cfg
 
+mkdir -p ${ext4_mountp}
+
 # terminate some status
 sudo losetup -d /dev/loop0 2>/dev/null || true
 sudo umount ${ext4_mountp} 2>/dev/null || true
@@ -59,6 +61,10 @@ sudo mount /dev/mapper/loop0p2 ${ext4_mountp}
 # TODO find a way to copy the ext filesystem without using sudo?
 sudo tar -C ${ext4_mountp} -xf ${buildroot}/output/images/rootfs.tar
 sudo umount ${ext4_mountp}
+
+if [ -d ${ext4_mountp} ]; then
+	rm -fr ${ext4_mountp}
+fi
 
 # *unbind* loop devices
 sudo kpartx -d ${image_raw}
