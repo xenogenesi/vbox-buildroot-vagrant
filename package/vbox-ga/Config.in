@@ -1,0 +1,11 @@
+config BR2_PACKAGE_VBOX_GA
+        bool "vbox guest additions"
+        help
+          VirtualBox Guest Additions, modules vboxguest and vboxsf
+          and the command mount.vboxsf (needed for features like
+          shared directories and others).
+          vbox guest additions needs a Linux kernel to be built
+          require modules support on kernel config and mount helpers
+          in busybox mount options
+
+          https://www.virtualbox.org
