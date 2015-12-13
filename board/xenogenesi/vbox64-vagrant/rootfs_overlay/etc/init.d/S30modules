@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -e /etc/modules -a x"$1" = x"start" ]; then
+	while read module args; do
+	if [ x"$module" != x"" ]; then
+		modprobe $module $args
+	fi
+	done <<-EOF
+$(/bin/grep -v ^# /etc/modules)
+EOF
+fi
+
