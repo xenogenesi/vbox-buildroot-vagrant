@@ -1,7 +1,8 @@
 # vbox-buildroot-vagrant
 External buildroot to build a minimal VirtualBox disk image with busybox, Vagrant ready.
 
-Some note:
+Some note
+- the `-lamp-` config enable apache2, php (fpm-php)
 - ipv4 only, ipv6 disabled
 - openssl/ssh enabled
 - vagrant user/home
