@@ -18,7 +18,7 @@ Assuming sources are in your home `~/src/`
 
     cd ~/src/${buildroot}
     make BR2_EXTERNAL=~/src/vbox-buildroot-vagrant \
-		BR2_DEFCONFIG=~/src/br2-vbox-vagrant/configs/vbox64-vagrant_defconfig <optional-br-target>
+		BR2_DEFCONFIG=~/src/vbox-buildroot-vagrant/configs/vbox64-vagrant_defconfig <optional-br-target>
 
 Once `.config` and `output/.br-external` are created usual buildroot targets can be used without appending `BR2_EXTERNAL` or `BR2_DEFCONFIG` to `make`.
     
