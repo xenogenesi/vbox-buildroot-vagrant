@@ -29,4 +29,5 @@
 /etc/sudoers.d/vagrant			f	440	0	0	-	-	-	-	-
 /vagrant				d	777	1001	1001	-	-	-	-	-
 /etc/init.d/S30modules			f	755	0	0	-	-	-	-	-
+/etc/init.d/S50httpd			f	755	0	0	-	-	-	-	-
 
