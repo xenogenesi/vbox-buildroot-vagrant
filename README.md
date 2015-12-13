@@ -32,12 +32,19 @@ The script `genvdi.sh` included to help to generate the VirtualBox VDI disk imag
 - use [syslinux](http://www.syslinux.org/) on a vfat partition
 - no initrd used yet
 
+## Vagrantfile
+
+- add `config.ssh.shell = "/bin/sh"
+- optionally for `-lamp-` configs:
+  - add `config.vm.network "forwarded_port", guest: 80, host: 8080` to access the web server (default: http://localhost:8080)
+  - add `config.vm.synced_folder "htdocs", "/usr/htdocs"` and create a local directory htdocs
+
 ## Add/Remove virtualbox VM to vagrant
 
 	## add
-    vagrant package --base ${VMNAME}
-    vagrant box add busybox package.box
-    #vagrant init busybox # (needed only once, first time)
+    vagrant package --base ${VMNAME}     # the name of the current VirtualBox VM
+    vagrant box add busybox package.box  # busybox and package just names see vagrant manual
+    #vagrant init busybox                # (needed only once, first time)
     vagrant up
 
     ## remove
