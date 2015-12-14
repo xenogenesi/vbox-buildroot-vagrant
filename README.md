@@ -1,5 +1,5 @@
 # vbox-buildroot-vagrant
-External buildroot to build a minimal VirtualBox disk image with busybox, Vagrant ready.
+[External buildroot](https://buildroot.org/downloads/manual/manual.html#outside-br-custom) to build a minimal VirtualBox disk image with busybox, Vagrant ready.
 
 Some note
 - the `-lamp-` config enable apache2, php (fpm-php), mysqld, phpmyadmin
@@ -36,7 +36,7 @@ The script `genvdi-syslinux.sh` included to help to generate the VirtualBox VDI 
 
 - add `config.ssh.shell = "/bin/sh"`
 - optionally for `-lamp-` configs:
-  - add `config.vm.network "httpd", guest: 80, host: 8080` [http://localhost:8080]
+  - add `config.vm.network "httpd", guest: 80, host: 8080` [http://localhost:8080](http://localhost:8080)
   - add `config.vm.synced_folder "htdocs", "/usr/htdocs"` and create a local directory `htdocs/`(the default `DocumentRoot` for installed apache2)
 
 ## Add/Remove virtualbox VM to vagrant
@@ -55,8 +55,9 @@ The script `genvdi-syslinux.sh` included to help to generate the VirtualBox VDI 
 ## phpmyadmin
 
 phpMyAdmin is installed without configuration, with the exception for `AllowNoPassword = true` in `config.inc.php`
-Access at [http://localhost:8080/phpmyadmin/]
+Access at [http://localhost:8080/phpmyadmin/](http://localhost:8080/phpmyadmin/)
 
 ## MySQL server
 
 MySQL is installed as it is, without configuration, boot with the GUI active to see suggested steps by MySQL scripts.
+
