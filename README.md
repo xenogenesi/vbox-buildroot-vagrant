@@ -26,18 +26,18 @@ The build generate `bzImage` and `rootfs.tar` into directory `${buildroot}/outpu
 
 ## Creating raw image and converting to vdi
 
-The script `genvdi.sh` included to help to generate the VirtualBox VDI disk image, it use `sudo` and require some host package to be pre-installed (see the script).
-`genvdi.sh` **is not** included in the buildroot's build process, use it manually (**at your own risk**).
+The script `genvdi-syslinux.sh` included to help to generate the VirtualBox VDI disk image, it use `sudo` and require some host package to be pre-installed (see the script).
+`genvdi-syslinux.sh` **is not** included in the buildroot's build process, use it manually (**at your own risk**).
 
 - use [syslinux](http://www.syslinux.org/) on a vfat partition
 - no initrd used yet
 
 ## Vagrantfile
 
-- add `config.ssh.shell = "/bin/sh"
+- add `config.ssh.shell = "/bin/sh"`
 - optionally for `-lamp-` configs:
-  - add `config.vm.network "forwarded_port", guest: 80, host: 8080` to access the web server (default: http://localhost:8080)
-  - add `config.vm.synced_folder "htdocs", "/usr/htdocs"` and create a local directory htdocs
+  - add `config.vm.network "httpd", guest: 80, host: 8080` [http://localhost:8080]
+  - add `config.vm.synced_folder "htdocs", "/usr/htdocs"` and create a local directory `htdocs/`(the default `DocumentRoot` for installed apache2)
 
 ## Add/Remove virtualbox VM to vagrant
 
@@ -51,3 +51,12 @@ The script `genvdi.sh` included to help to generate the VirtualBox VDI disk imag
     vagrant destroy
     vagrant box remove busybox
     rm package.box
+
+## phpmyadmin
+
+phpMyAdmin is installed without configuration, with the exception for `AllowNoPassword = true` in `config.inc.php`
+Access at [http://localhost:8080/phpmyadmin/]
+
+## MySQL server
+
+MySQL is installed as it is, without configuration, boot with the GUI active to see suggested steps by MySQL scripts.
