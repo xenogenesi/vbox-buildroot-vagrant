@@ -1,0 +1,23 @@
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+
+# use `sudo -i` instead of `sudo -s`, so profile is loaded
+#if [ "$PS1" ]; then
+	if [ "`id -u`" -eq 0 ]; then
+		#export PS1='\u@\h:\W# '
+		export PS1='\[\e[01;31m\]\u@\h:\w\$ \[\e[00m\]'
+	else
+		#export PS1='\u@\h:\W$ '
+		export PS1='\[\e[01;32m\]\u@\h:\[\e[00m\]:\[\e[01;34m\]\w\[\e[00m\]\$ '
+	fi
+#fi
+
+export PAGER='/bin/more '
+export EDITOR='/bin/vi'
+
+# Source configuration files from /etc/profile.d
+for i in /etc/profile.d/*.sh ; do
+	if [ -r "$i" ]; then
+		. $i
+	fi
+	unset i
+done
