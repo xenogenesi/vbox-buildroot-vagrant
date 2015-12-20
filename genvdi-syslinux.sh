@@ -25,6 +25,7 @@ rm -f ${output_vdi} 2>/dev/null || true
 
 # create image container
 dd if=/dev/zero of=${image_raw} bs=1M count=150
+#dd if=/dev/zero of=${image_raw} bs=1M count=600
 
 # create two partitions:
 # 1) few mega "W95 Fat" for syslinux and bzImage
@@ -87,7 +88,16 @@ syslinux --offset $((${vfat_start}*512)) --directory /boot/syslinux --install ${
 # install mbr
 dd if=/usr/lib/SYSLINUX/mbr.bin of=${image_raw} bs=440 count=1 conv=notrunc
 
+# detach old disk from vm
+VBoxManage storageattach test2 --storagectl "IDE" --device 0 --port 0 --type hdd --medium none || true
+# should remove old disk from media...
+#VBoxManage closemedium disk /tmp/test.vdi --delete
+VBoxManage closemedium disk /tmp/test.vdi || true
+
 VBoxManage convertdd ${image_raw} ${output_vdi} --format VDI
 
 # convert back (not tested)
 # VBoxManage clonehd src.vdi dst.raw --format RAW
+
+# attach new disk to vm
+VBoxManage storageattach test2 --storagectl "IDE" --device 0 --port 0 --type hdd --medium /tmp/test.vdi
