@@ -1,0 +1,3 @@
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'10.0.2.%' IDENTIFIED BY '' with grant option;
+FLUSH PRIVILEGES;
+
