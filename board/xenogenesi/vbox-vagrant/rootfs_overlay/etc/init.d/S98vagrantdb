@@ -1,0 +1,22 @@
+#!/bin/sh
+
+waitmysql() {
+        while test ! -f /var/run/mysqld.pid ; do
+                sleep 1
+        done
+	# FIXME will not work if user set a password for root
+	echo "CREATE DATABASE IF NOT EXISTS vagrant;" | mysql -u root
+}                                                                                                                                                    
+
+case "$1" in
+	start)
+		waitmysql &
+		;;
+	stop)
+		echo "vboxsf stop: ignored" >&2
+		;;
+	restart)
+		echo "vboxsf restart: ignored" >&2
+		;;
+esac
+
