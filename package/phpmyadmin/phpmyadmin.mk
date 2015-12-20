@@ -25,7 +25,7 @@ endef
 
 
 define PHPMYADMIN_PERMISSIONS
-	$(PHPMYADMIN_ROOTFS_DIR)  r  0755  33  33  -  -  -  -  -
+	$(PHPMYADMIN_ROOTFS_DIR)  r  0755  1001  33  -  -  -  -  -
 endef
 
 $(eval $(generic-package))
