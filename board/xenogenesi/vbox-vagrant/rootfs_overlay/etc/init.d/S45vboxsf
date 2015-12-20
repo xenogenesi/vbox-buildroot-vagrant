@@ -1,0 +1,17 @@
+#!/bin/sh
+
+case "$1" in
+	start)
+		# FIXME what if htdocs isn't shared? any way to check?
+		#       should mount only if *isn't* a vagrant machine
+		# uid=vagrant,gid=www-data
+		mount.vboxsf -o uid=1001,gid=33,fmode=664,dmode=775 htdocs /usr/htdocs
+		;;
+	stop)
+		echo "vboxsf stop: ignored" >&2
+		;;
+	restart)
+		echo "vboxsf restart: ignored" >&2
+		;;
+esac
+
