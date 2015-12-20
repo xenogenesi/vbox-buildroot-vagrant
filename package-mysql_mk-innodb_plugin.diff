@@ -1,0 +1,15 @@
+--- buildroot-2015.11.1.orig/package/mysql/mysql.mk
++++ buildroot-2015.11.1/package/mysql/mysql.mk
+@@ -81,8 +81,11 @@
+ 	--without-plugin-federated \
+ 	--without-plugin-ibmdb2i \
+ 	--without-plugin-innobase \
+-	--without-plugin-innodb_plugin \
+ 	--without-plugin-ndbcluster
++
++
++# we want innodb tables, apparently with mysql 5.1 the plugin implementation is better
++#	--without-plugin-innodb_plugin
+ 
+ # Debugging is only available for the server, so no need for
+ # this if-block outside of the server if-block

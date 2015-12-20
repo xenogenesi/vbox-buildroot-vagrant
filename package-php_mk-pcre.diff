@@ -1,0 +1,16 @@
+--- buildroot-2015.11.1.orig/package/php/php.mk
++++ buildroot-2015.11.1/package/php/php.mk
+@@ -219,8 +219,12 @@
+ 	$(SED) '/^#define SUPPORT_JIT/d' $(@D)/ext/pcre/pcrelib/config.h
+ endef
+ 
++# apache2 enable pcre as dependency, and if enabled php try to use it
++# but at runtime there's some complain about this pcre doesn't support utf-8
++# so here we force php to build its own pcre
++
+ ### Use external PCRE if it's available
+-ifeq ($(BR2_PACKAGE_PCRE),y)
++ifeq ($(BR2_PACKAGE_PCRE),ydisable)
+ PHP_CONF_OPTS += --with-pcre-regex=$(STAGING_DIR)/usr
+ PHP_DEPENDENCIES += pcre
+ else
