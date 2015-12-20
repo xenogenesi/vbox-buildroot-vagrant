@@ -30,4 +30,6 @@
 /vagrant				d	777	1001	1001	-	-	-	-	-
 /etc/init.d/S30modules			f	755	0	0	-	-	-	-	-
 /etc/init.d/S50httpd			f	755	0	0	-	-	-	-	-
+/etc/init.d/S45vboxsf			f	755	0	0	-	-	-	-	-
+/etc/init.d/S98vagrantdb		f	755	0	0	-	-	-	-	-
 
