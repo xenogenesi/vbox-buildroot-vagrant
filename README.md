@@ -17,6 +17,8 @@ Some note
 Assuming sources are in your home `~/src/`
 
     cd ~/src/${buildroot}
+    # apply package-php_mk-pcre.diff
+	# apply package-mysql_mk-innodb_plugin.diff
     make BR2_EXTERNAL=~/src/vbox-buildroot-vagrant \
 		BR2_DEFCONFIG=~/src/vbox-buildroot-vagrant/configs/vbox64-vagrant_defconfig <optional-br-target>
 
