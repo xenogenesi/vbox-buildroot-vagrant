@@ -1,7 +1,9 @@
 #!/bin/sh -e
-
+#
+# NOTE: this script is provided as an example to create VDI images
+# 
 # tested only with debian/unstable
-
+#
 # host dependencies:
 # kpartx syslinux dosfstools mtools
 # (probably already installed) e2fsprogs util-linux coreutils mount
@@ -14,6 +16,8 @@ ext4_mountp=/tmp/ext4
 vfat_start=2048
 vfat_start_in_mega=1M
 syslinux_cfg=/tmp/syslinux.cfg
+vmname=test2
+mbr_path=/usr/lib/SYSLINUX/mbr.bin
 
 mkdir -p ${ext4_mountp}
 
@@ -86,13 +90,13 @@ rm ${syslinux_cfg}
 syslinux --offset $((${vfat_start}*512)) --directory /boot/syslinux --install ${image_raw}
 
 # install mbr
-dd if=/usr/lib/SYSLINUX/mbr.bin of=${image_raw} bs=440 count=1 conv=notrunc
+dd if=${mbr_path} of=${image_raw} bs=440 count=1 conv=notrunc
 
 # detach old disk from vm
-VBoxManage storageattach test2 --storagectl "IDE" --device 0 --port 0 --type hdd --medium none || true
+VBoxManage storageattach ${vmname} --storagectl "IDE" --device 0 --port 0 --type hdd --medium none || true
 # should remove old disk from media...
-#VBoxManage closemedium disk /tmp/test.vdi --delete
-VBoxManage closemedium disk /tmp/test.vdi || true
+#VBoxManage closemedium disk ${output_vdi} --delete
+VBoxManage closemedium disk ${output_vdi} || true
 
 VBoxManage convertdd ${image_raw} ${output_vdi} --format VDI
 
@@ -100,4 +104,4 @@ VBoxManage convertdd ${image_raw} ${output_vdi} --format VDI
 # VBoxManage clonehd src.vdi dst.raw --format RAW
 
 # attach new disk to vm
-VBoxManage storageattach test2 --storagectl "IDE" --device 0 --port 0 --type hdd --medium /tmp/test.vdi
+VBoxManage storageattach ${vmname} --storagectl "IDE" --device 0 --port 0 --type hdd --medium ${output_vdi}
