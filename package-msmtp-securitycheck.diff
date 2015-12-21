@@ -1,0 +1,15 @@
+diff -urN buildroot-2015.11.1.orig/package/msmtp/001-disable-conf-securitycheck.patch buildroot-2015.11.1/package/msmtp/001-disable-conf-securitycheck.patch
+--- buildroot-2015.11.1.orig/package/msmtp/001-disable-conf-securitycheck.patch	1970-01-01 01:00:00.000000000 +0100
++++ buildroot-2015.11.1/package/msmtp/001-disable-conf-securitycheck.patch	2015-12-21 15:19:16.413836501 +0100
+@@ -0,0 +1,11 @@
++--- msmtp-1.6.2/src/msmtp.c.orig	2015-12-21 15:17:47.679042549 +0100
+++++ msmtp-1.6.2/src/msmtp.c	2015-12-21 15:18:29.230477685 +0100
++@@ -3473,7 +3473,7 @@
++ #ifdef W32_NATIVE
++     securitycheck = 1;
++ #else
++-    securitycheck = (geteuid() != 0);
+++    /* no security checks thanks */
++ #endif
++     if ((e = get_conf(real_user_conffile, securitycheck,
++                     &user_account_list, &errstr)) != CONF_EOK)
