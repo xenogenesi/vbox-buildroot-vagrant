@@ -2,7 +2,7 @@
 [External buildroot](https://buildroot.org/downloads/manual/manual.html#outside-br-custom) to build a minimal VirtualBox disk image with busybox, Vagrant ready.
 
 Some note
-- the `-lamp-` config enable apache2, php (fpm-php), mysqld, phpmyadmin
+- the `-lamp-` config enable apache2, php (fpm-php), mysqld, phpmyadmin, msmtp
 - ipv4 only, ipv6 disabled
 - openssl/ssh enabled
 - vagrant user/home
