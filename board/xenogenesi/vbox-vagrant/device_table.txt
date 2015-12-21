@@ -33,4 +33,7 @@
 /etc/init.d/S45vboxsf			f	755	0	0	-	-	-	-	-
 /etc/init.d/S98vagrantdb		f	755	0	0	-	-	-	-	-
 /var/box-status				f	664	1001	1001	-	-	-	-	-
+/var/spool				r	755	0	0	-	-	-	-	-
+/var/spool/cron/crontabs		d	1730	0	0	-	-	-	-	-
+/etc/init.d/S99cron			f	755	0	0	-	-	-	-	-
 
