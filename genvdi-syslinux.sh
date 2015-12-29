@@ -11,6 +11,7 @@
 buildroot=$HOME/src/buildroot-2015.11.1
 
 image_raw=/tmp/test.raw
+image_size=${1:-150}
 output_vdi=/tmp/test.vdi
 ext4_mountp=/tmp/ext4
 vfat_start=2048
@@ -28,7 +29,7 @@ sudo kpartx -d ${image_raw} 2>/dev/null || true
 rm -f ${output_vdi} 2>/dev/null || true
 
 # create image container
-dd if=/dev/zero of=${image_raw} bs=1M count=150
+dd if=/dev/zero of=${image_raw} bs=1M count=${image_size}
 #dd if=/dev/zero of=${image_raw} bs=1M count=600
 
 # create two partitions:
