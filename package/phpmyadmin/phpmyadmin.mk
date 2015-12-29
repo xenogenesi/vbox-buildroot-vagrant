@@ -19,8 +19,10 @@ define PHPMYADMIN_INSTALL_TARGET_CMDS
 	-rm -fr $(PHPMYADMIN_TARGET_DIR)/*
 	cd $(@D); tar -cf - . | tar -C $(PHPMYADMIN_TARGET_DIR) -xf -
 	sed -e "s/AllowNoPassword'] = false/AllowNoPassword'] = true/" \
+		-e 's/^?>$$//' \
 		$(PHPMYADMIN_TARGET_DIR)/config.sample.inc.php \
 		> $(PHPMYADMIN_TARGET_DIR)/config.inc.php
+	echo '$$cfg[LoginCookieValidity] = 36000;' >>$(PHPMYADMIN_TARGET_DIR)/config.inc.php
 endef
 
 
