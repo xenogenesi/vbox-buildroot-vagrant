@@ -1,0 +1,8 @@
+config BR2_PACKAGE_MLB
+        bool "minimal linux bootloader"
+        help
+          Minimal Linux Bootloader, adapted/adopted from Sebastian Plotz.
+          xxd and nasm are required.
+          see https://youtu.be/gHi0CdEqjqw
+
+          https://github.com/xenogenesi/mlb

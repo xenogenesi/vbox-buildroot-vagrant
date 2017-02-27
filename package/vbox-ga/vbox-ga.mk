@@ -4,17 +4,17 @@
 #
 ################################################################################
 
-VBOX_GA_VERSION = 5.0.10
+VBOX_GA_VERSION = 5.1.14
 VBOX_GA_SOURCE = vbox-guest-$(VBOX_GA_VERSION).tar.gz
 # TODO find if there's a make variable for the current package directory
 # (directory name and make variables prefix must match!)
-VBOX_GA_SITE = $(BR2_EXTERNAL)/package/vbox-ga
+VBOX_GA_SITE = $(BR2_EXTERNAL_VBOX_BUILDROOT_VAGRANT_PATH)/package/vbox-ga
 VBOX_GA_SITE_METHOD = file
 VBOX_GA_LICENSE = GPLv2
 VBOX_GA_LICENSE_FILES = COPYING
 
-# NOTE:
-# the vbox-guest-5.0.10.tar.gz is manually built using VirtualBox sources
+# NOTE: export_modules from virtualbox sources
+# the vbox-guest-5.1.14.tar.gz is manually built using VirtualBox sources
 # (to avoid download the whole sources and save some disk space)
 # modules sources are built using the script export_modules included on
 # oracle's sources

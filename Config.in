@@ -1,3 +1,4 @@
-source "$BR2_EXTERNAL/package/phpmyadmin/Config.in"
-source "$BR2_EXTERNAL/package/vbox-ga/Config.in"
+source "$BR2_EXTERNAL_VBOX_BUILDROOT_VAGRANT_PATH/package/phpmyadmin/Config.in"
+source "$BR2_EXTERNAL_VBOX_BUILDROOT_VAGRANT_PATH/package/vbox-ga/Config.in"
+source "$BR2_EXTERNAL_VBOX_BUILDROOT_VAGRANT_PATH/package/mlb/Config.in"
 
